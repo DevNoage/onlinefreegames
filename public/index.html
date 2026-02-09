@@ -68,7 +68,7 @@
   <audio id="sfx-correct" src="_SFX/correct.mp3" preload="auto"></audio>
   <audio id="sfx-wrong" src="_SFX/wrong.mp3" preload="auto"></audio>
   <audio id="sfx-boost" src="_SFX/speed_boost.mp3" preload="auto"></audio>
-  <audio id="sfx-noboost" src="_SFX/speed_empty.mp3" preload="auto"></audio>
+  <audio id="sfx-noboost" src="_SFX/wrong.mp3" preload="auto"></audio>
   <audio id="sfx-recharge-1" src="_SFX/stama_recharge_01.mp3" preload="auto"></audio>
   <audio id="sfx-recharge-2" src="_SFX/stama_recharge_02.mp3" preload="auto"></audio>
   <audio id="sfx-countdown" src="_SFX/countdown.mp3" preload="auto"></audio>
@@ -77,7 +77,7 @@
   <audio id="sfx-win-3" src="_SFX/win_03.mp3" preload="auto"></audio>
 
   <script>
-    window.__WS_URL__ = "ws://89.167.56.91:3000";
+    window.__WS_URL__ = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host;
   </script>
   <script src="client.js"></script>
 </body>
