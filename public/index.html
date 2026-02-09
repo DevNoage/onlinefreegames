@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Rome Bike Mayhem</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="stamina-widget" aria-label="Stamina"></div>
+  <div id="banana-score" aria-label="Banane vinte">
+    <img src="_Assets/banana_testa.png" alt="Banana">
+    <span id="banana-count">0</span>
+  </div>
+
+  <canvas id="minimap" width="160" height="90" aria-label="Minimap"></canvas>
+  <pre id="debug" class="debug-hidden" aria-hidden="true"></pre>
+
+  <div id="leaderboard">
+    <div class="leaderboard-title">Classifica</div>
+    <div id="leaderboard-list"></div>
+  </div>
+
+  <div id="controls" aria-hidden="true">
+    <button id="left" aria-label="Left">&#9664;</button>
+    <button id="right" aria-label="Right">&#9654;</button>
+    <button id="boost" aria-label="Boost">B</button>
+    <button id="jump" aria-label="Jump">&#9650;</button>
+  </div>
+
+  <div id="minigame" class="minigame-hidden" aria-hidden="true">
+    <div class="minigame-panel">
+      <div class="minigame-title">Premi le frecce</div>
+      <div id="minigame-seq"></div>
+      <div id="minigame-count"></div>
+      <div id="minigame-timer"></div>
+    </div>
+  </div>
+  <div id="minigame-result" class="minigame-result minigame-result-hidden" aria-live="polite"></div>
+
+  <button id="menu-toggle" aria-label="Menu">Menu</button>
+
+  <div id="login" class="login-hidden" aria-hidden="true">
+    <div class="login-panel">
+      <div class="login-title">Inserisci nome</div>
+      <input id="name-input" type="text" maxlength="16" placeholder="Nome">
+      <button id="name-submit" type="button">Entra</button>
+    </div>
+  </div>
+
+  <div id="menu" class="menu-hidden" aria-hidden="true">
+    <div class="menu-panel">
+      <div class="menu-title">Menu</div>
+      <div class="menu-item">Premi ESC o M per chiudere</div>
+      <label class="menu-label" for="volume">Volume musica</label>
+      <input id="volume" type="range" min="0" max="100" value="40">
+      <label class="menu-toggle">
+        <input id="mute" type="checkbox">
+        Mute musica
+      </label>
+      <button id="menu-close" type="button">Chiudi</button>
+    </div>
+  </div>
+
+  <audio id="bgm" src="_Music/envato-music-pixelated-slumber.mp3" loop preload="auto"></audio>
+  <audio id="sfx-correct" src="_SFX/correct.mp3" preload="auto"></audio>
+  <audio id="sfx-wrong" src="_SFX/wrong.mp3" preload="auto"></audio>
+  <audio id="sfx-boost" src="_SFX/speed_boost.mp3" preload="auto"></audio>
+  <audio id="sfx-noboost" src="_SFX/speed_empty.mp3" preload="auto"></audio>
+  <audio id="sfx-recharge-1" src="_SFX/stama_recharge_01.mp3" preload="auto"></audio>
+  <audio id="sfx-recharge-2" src="_SFX/stama_recharge_02.mp3" preload="auto"></audio>
+  <audio id="sfx-countdown" src="_SFX/countdown.mp3" preload="auto"></audio>
+  <audio id="sfx-win-1" src="_SFX/win_01.mp3" preload="auto"></audio>
+  <audio id="sfx-win-2" src="_SFX/win_02.mp3" preload="auto"></audio>
+  <audio id="sfx-win-3" src="_SFX/win_03.mp3" preload="auto"></audio>
+
+  <script>
+    window.__WS_URL__ = "wss://rome-bike-mayhem.onrender.com";
+  </script>
+  <script src="client.js"></script>
+</body>
+</html>

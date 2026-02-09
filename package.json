@@ -1,0 +1,12 @@
+{
+  "name": "rome-bike-mayhem-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "sqlite3": "^5.1.7",
+    "ws": "^8.17.0"
+  }
+}

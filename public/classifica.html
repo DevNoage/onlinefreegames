@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Classifica - Rome Bike Mayhem</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", sans-serif;
+      background: #f3eee7;
+      color: #1b1b1b;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 28px 20px 40px;
+    }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fffaf1;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      font-size: 14px;
+    }
+    th {
+      background: rgba(216, 110, 74, 0.2);
+      font-weight: 700;
+    }
+    tr:nth-child(even) td {
+      background: rgba(255, 255, 255, 0.6);
+    }
+    .note {
+      margin-top: 12px;
+      font-size: 12px;
+      color: #5c3c2a;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Classifica globale</h1>
+    <table aria-label="Classifica">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome</th>
+          <th>Banane vinte</th>
+        </tr>
+      </thead>
+      <tbody id="rows">
+        <tr><td colspan="3">Caricamento...</td></tr>
+      </tbody>
+    </table>
+    <div class="note">Aggiornamento automatico ogni 10 secondi.</div>
+  </main>
+
+  <script>
+    const rows = document.getElementById("rows");
+    const TOKEN = "cambia-questa-chiave";
+    async function loadLeaderboard() {
+      try {
+        const res = await fetch(`/api/leaderboard?token=${encodeURIComponent(TOKEN)}`);
+        const data = await res.json();
+        if (!Array.isArray(data)) return;
+        rows.innerHTML = data.length
+          ? data.map((row, idx) => (
+              `<tr><td>${idx + 1}</td><td>${row.name || "Player"}</td><td>${row.bananas_won || 0}</td></tr>`
+            )).join("")
+          : "<tr><td colspan=\"3\">Nessun dato</td></tr>";
+      } catch (err) {
+        rows.innerHTML = "<tr><td colspan=\"3\">Errore di caricamento</td></tr>";
+      }
+    }
+    loadLeaderboard();
+    setInterval(loadLeaderboard, 10000);
+  </script>
+</body>
+</html>
